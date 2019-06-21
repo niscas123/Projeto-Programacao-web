@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>CADASTRO DO ESTAGIÁRIO</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="MENU">
+                            <p:menuitem value="Página Inicial" url="home.xhtml" />
+                            <p:menuitem value="Novo Estagiario" url="estagiario.xhtml" />
+                            <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
+                            <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
+                            <p:menuitem value="Novo Sorteio" url="sorteio.xhtml" />
+                            <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
+                            <p:menuitem value="Lista de Sorteio" url="listarSorteio.xhtml" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    
+                    <h:form id="usuario">
+                        <p:panel header="Cadastro do Estagiário" style="width:600px; margin:auto">
+                            <h:panelGrid id="cliente" columns="3" >
+                                <h:outputText value="Nome Completo: *"/>
+                                <p:inputText id="nome" value="#{usuario.nome}" required="true" requiredMessage="Digite o nome"/>
+                                <p:message for="nome"/>
+                                
+                                <h:outputText value="CPF: *"/>
+                                <p:inputText id="cpf" value="#{usuario.cpf}" required="true" requiredMessage="Digite o cpf"/>
+                                <p:message for="cpf"/>
+
+                                <h:outputText value="Email: *"/>
+                                <p:inputText id="email" value="#{usuario.email}" required="true" requiredMessage="Digite o email"/>
+                                <p:message for="email"/>
+
+                                <h:outputText value="Senha: *"/>
+                                <p:password id="senha" value="#{usuario.senha}" required="true" requiredMessage="Digite a senha"/>
+                                <p:message for="senha"/>
+                                
+                                <p:outputLabel for="funcao" value="Cargo:" />
+                                <p:selectOneMenu id="funcao" value="#{usuario.tipo}" style="width:205px">
+                                    <f:selectItem itemLabel="Selecione o Cargo" itemValue="" />
+                                    <f:selectItem itemLabel="Estagiário" itemValue="estagiario" />
+                                </p:selectOneMenu>
+
+                            </h:panelGrid>
+                            <p:commandButton value="Cadastrar" action="#{controllerUsuario.cadastroUsuario(usuario)}" ajax="false"/>
+                        </p:panel>
+                    </h:form>
+                    
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>

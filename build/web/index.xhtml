@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <title>LOGIN</title>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="center">
+                    <h:form id="login">
+                        <p:panel header="Login" style="width:600px; margin:auto">
+                        <h:panelGrid columns="2" cellpadding="8">
+                            <h:outputLabel for="username" value="Usuário: " />
+                            <p:inputText id="nome" value="#{controllerUsuario.email}" required="true" label="username" />
+
+                            <h:outputLabel for="password" value="Senha: " />
+                            <p:password id="senha" value="#{controllerUsuario.senha}" required="true" label="password" />
+                            
+                        </h:panelGrid>
+                            <p:commandButton value="Login" id="button" action="#{controllerUsuario.login(controller.email, controller.senha)}" ajax="false"/>
+                        </p:panel>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
