@@ -52,8 +52,4 @@ public class RepositorioUsuario implements InterfaceGeral<Usuario> {
         }
     }
 
-    public void persist(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

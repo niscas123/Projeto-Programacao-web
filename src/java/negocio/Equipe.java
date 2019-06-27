@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "equipe")
-@ManagedBean(name = "equipe")
+@ManagedBean(name = "equi")
 @RequestScoped
 public class Equipe {
 
@@ -45,11 +45,10 @@ public class Equipe {
     public int getId() {
         return id;
     }
-
+    
     public Usuario getLider() {
         return lider;
     }
-
     public void setLider(Usuario lider) {
         this.lider = lider;
     }
@@ -57,7 +56,6 @@ public class Equipe {
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
-
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }

@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -18,22 +20,49 @@ import repositorios.RepositorioEquipe;
 public class ControllerArtigo {
 
     Usuario user = (Usuario) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("usuarioLogado");
-
     RepositorioArtigo repoArtigo = new RepositorioArtigo();
     RepositorioEquipe repoEquipe = new RepositorioEquipe();
 
     public void cadastroArtigo(Artigo artigo) {
-        List<Equipe> equipeList = repoEquipe.Listen();
-        Equipe e = null;
+        List<Equipe> arrayEquipe = repoEquipe.Listen();
+        Equipe equipe = null;
 
-        for (int i = 0; i < equipeList.size(); i++) {
-            if (equipeList.get(i).getLider().getId() == user.getId()) {
-                e = equipeList.get(i);
+        for (int i = 0; i < arrayEquipe.size(); i++) {
+            if (arrayEquipe.get(i).getLider().getId() == user.getId()) {
+                equipe = arrayEquipe.get(i);
             }
         }
-
+        //artigo.setLider(user);
         repoArtigo.insert(artigo);
 
+    }
+
+    public List<Artigo> sorteioArtigo() {
+        List<Artigo> artigoList = repoArtigo.Listen();
+
+        int numero;
+        int[] num = new int[artigoList.size()];
+        Random r = new Random();
+
+        for (int i = 0; i < num.length; i++) {
+            numero = r.nextInt(artigoList.size());
+            for (int j = 0; j < num.length; j++) {
+                if (numero == num[j] && j != i) {
+                    numero = r.nextInt(artigoList.size());
+                } else {
+                    num[i] = numero;
+                }
+            }
+        }
+        ArrayList<Artigo> array = new ArrayList<>();
+
+        for (int i = 0; i < num.length; i++) {
+            array.add(artigoList.get(num[i]));
+
+            //System.out.println(artigoList.get(num[i]).getId());
+        }
+
+        return array;
     }
 
     public void insert(Artigo s) {
@@ -58,17 +87,16 @@ public class ControllerArtigo {
 
     }
 
-    public List<Artigo> listaLider() {
-        List<Artigo> listaL = repoArtigo.Listen();
+    public List<Artigo> listaArtigo() {
+        List<Artigo> artigoLista = repoArtigo.Listen();
 
-        List<Artigo> lista = new ArrayList<>();
+        List<Artigo> listaN = new ArrayList<>();
 
-        for (int i = 0; i < listaL.size(); i++) {
-            if (listaL.get(i).getLider().getId() == user.getId()) {
-                lista.add(listaL.get(i));
-            }
+        for (int i = 0; i < artigoLista.size(); i++) {
+            listaN.add(artigoLista.get(i));
+
         }
-        return lista;
+        return listaN;
     }
 
 }

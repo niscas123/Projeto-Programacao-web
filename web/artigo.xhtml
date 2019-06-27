@@ -1,75 +1,69 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view contentType="text/html">
         <h:head>
-            <f:facet name="primeiro">
+            <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>CADASTRO DE ARTIGOS</title>
+                <title>CADASTRAR ARTIGO</title>
             </f:facet>
         </h:head>
 
         <h:body>
+
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
                     <p:menu>
                         <p:submenu label="MENU">
                             <p:menuitem value="Página Inicial" url="home.xhtml" />
-                            <p:menuitem value="Novo Estagiario" url="estagiario.xhtml" />
-                            <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
                             <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
-                            <p:menuitem value="Novo Sorteio" url="sorteio.xhtml" />
-                            <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
-                            <p:menuitem value="Lista de Sorteio" url="listarSorteio.xhtml" />
+                            <p:menuitem value="Sair do Sistema" url="#{controllerUsuario.logout()}" />
                         </p:submenu>
-                    </p:menu>                 
+                    </p:menu>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
 
                     <h:form id="artigo">
-                        <p:panel header="Cadastro de Líder e Administrador" style="width:600px; margin:auto">
-                            <h:panelGrid id="cliente" columns="3" cellpadding="8">
-                                <h:outputLabel value="Título: *" />
-                                <p:inputText id="nometitulo" value="#{artigo.titulo}" required="true" />
-                                <p:message for="nometitulo"/>
+                        <h2>Cadastrar Artigo</h2>
+                        <h:panelGrid id="nome" columns="3" >
+                            <h:outputText value="Nome do Autor: *"/>
+                            <p:inputText id="isNome" value="#{art.nome}" required="true" requiredMessage="Digite o Nome"/>
+                            <p:message for="isNome"/>
 
-                                <h:outputLabel value="Nome do Autor: *" />
-                                <p:inputText id="nomeautor" value="#{artigo.nome}" required="true" />
-                                <p:message for="nomeautor"/>
+                            <h:outputText value="Título: *"/>
+                            <p:inputText id="isTitulo" value="#{mulher.idade}" required="true" requiredMessage="Digite a Idade"/>
+                            <p:message for="isTitulo"/>
 
-                                <h:outputLabel value="Ano: *" />
-                                <p:inputText id="ano" value="#{artigo.ano}" required="true" />
-                                <p:message for="ano"/>
+                            <h:outputText value="Ano: *"/>
+                            <p:inputText id="isAno" value="#{mulher.ano}" required="true" requiredMessage="Digite a Idade"/>
+                            <p:message for="isAno"/>
 
-                                <h:outputLabel value="Paginas: *" />
-                                <p:inputText id="paginas" value="#{artigo.paginas}" required="true" />
-                                <p:message for="paginas"/>
+                            <h:outputText value="Páginas: *"/>
+                            <p:inputText id="isPaginas" value="#{art.paginas}" required="true" requiredMessage="Digite a Idade"/>
+                            <p:message for="isPaginas"/>
 
-                                <h:outputLabel value="DOI: *" />
-                                <p:inputText id="doi" value="#{artigo.doi}" required="true" />
-                                <p:message for="doi"/>
+                            <h:outputText value="DOI: *"/>
+                            <p:inputText id="isDoi" value="#{art.doi}" required="true" requiredMessage="Digite a Idade"/>
+                            <p:message for="isDoi"/>
 
-                                <h:outputLabel value="ISBN: *" />
-                                <p:inputText id="isbn" value="#{artigo.isbn}" required="true" />
-                                <p:message for="isbn"/>
+                            <h:outputText value="ISBN: *"/>
+                            <p:inputText id="isIsbn" value="#{art.paginas}" required="true" requiredMessage="Digite a Idade"/>
+                            <p:message for="isIsbn"/>
 
-                                <p:outputLabel for="publicacao" value="Publicação: " />
-                                <p:selectOneMenu id="publicacao" value="#{artigo.publicacao}" style="width:205px">
-                                    <f:selectItem itemLabel="Selecione Um" itemValue="" />
-                                    <f:selectItem itemLabel="Journal" itemValue="Journal" />
-                                    <f:selectItem itemLabel="Evento" itemValue="Evento" />
-                                </p:selectOneMenu>
+                            <!--<h:panelGrid columns="3" cellpadding="8">
+                                <p:outputLabel for="console" value="Publicação: *" />
+                                <p:selectOneRadio id="console" value="#{art.publicacao}">
+                                    <f:selectItem itemLabel="Jornal" itemValue="jornal" />
+                                    <f:selectItem itemLabel="Evento" itemValue="evento" />
+                                </p:selectOneRadio>
+                            </h:panelGrid>-->
 
-                            </h:panelGrid>
-                            <p:commandButton value="Cadastrar" action="#{controllerArtigo.insert(artigo)}" ajax="false"/>
-                        </p:panel>
+                        </h:panelGrid>
+
+                        <p:commandButton value="Cadastrar" action="#{controllerUsuario.cadastroUsuario(usu)}" ajax="false"/>
+
                     </h:form>
 
                 </p:layoutUnit>

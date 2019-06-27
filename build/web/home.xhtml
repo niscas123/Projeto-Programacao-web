@@ -1,10 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" 
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view contentType="text/html">
         <h:head>
@@ -22,8 +17,8 @@
                         <p:menu>
                             <p:submenu label="MENU">
                                 <p:menuitem value="Página Inicial" url="home.xhtml" />
-                                <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
-                                <p:menuitem value="Novo Sorteio" url="sorteio.xhtml" />
+                                <p:menuitem value="Novo Artigo" url="artigo.xhtml" /> 
+                                <p:menuitem value="Sair do Sistema" url="#{controllerUsuario.logout()}" />
                             </p:submenu>
                         </p:menu>
                     </p:layoutUnit>
@@ -32,44 +27,75 @@
                     </p:layoutUnit>
                 </p:layout>   
             </c:if>
-            
+
             <c:if  test="${controllerUsuario.log == 2}">
-                
                 <p:layout fullPage="true">
                     <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
                         <p:menu>
                             <p:submenu label="MENU">
                                 <p:menuitem value="Página Inicial" url="home.xhtml" />
                                 <p:menuitem value="Novo Estagiário" url="estagiario.xhtml" />
+                                <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
+                                <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
                                 <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
-                                <p:menuitem value="Novo Sorteio" url="sorteio.xhtml" />
+                                <p:menuitem value="Sair do Sistema" url="#{controllerUsuario.logout()}" />
                             </p:submenu>
                         </p:menu>
                     </p:layoutUnit>
+
                     <p:layoutUnit position="center">
                         SEJA BEM VINDO AO SISTEMA DE CADASTRAMENTO DE ARTIGOS
+                        <!--<c:forEach var="item" items="">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Nome do usuário: " />
+                                <h:outputText value="" />
+
+                                <h:outputText value="CPF: " />
+                                <h:outputText value="" />
+
+                                <h:outputText value="Cargo:" />
+                                <h:outputText value="" />
+                            </p:panelGrid>
+                        </c:forEach>-->
+
                     </p:layoutUnit>
                 </p:layout>
             </c:if>
             
             <c:if  test="${controllerUsuario.log == 3}">
-                
                 <p:layout fullPage="true">
                     <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
                         <p:menu>
                             <p:submenu label="MENU">
                                 <p:menuitem value="Página Inicial" url="home.xhtml" />
+                                <p:menuitem value="Novo Estagiário" url="estagiario.xhtml" />
                                 <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
+                                <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
                                 <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
-                                <p:menuitem value="Lista de Sorteio" url="listarSorteio.xhtml" />
+                                <p:menuitem value="Sair do Sistema" url="#{controllerUsuario.logout()}" />
                             </p:submenu>
                         </p:menu>
                     </p:layoutUnit>
+
                     <p:layoutUnit position="center">
                         SEJA BEM VINDO AO SISTEMA DE CADASTRAMENTO DE ARTIGOS
+                        <!--<c:forEach var="item" items="">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Nome do usuário: " />
+                                <h:outputText value="" />
+
+                                <h:outputText value="CPF: " />
+                                <h:outputText value="" />
+
+                                <h:outputText value="Cargo:" />
+                                <h:outputText value="" />
+                            </p:panelGrid>
+                        </c:forEach>-->
+
                     </p:layoutUnit>
                 </p:layout>
             </c:if>
+
         </h:body>
     </f:view>
 </html>

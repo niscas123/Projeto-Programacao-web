@@ -1,5 +1,6 @@
 package DAO;
 
+import controller.ControllerArtigo;
 import java.util.ArrayList;
 
 import negocio.Artigo;
@@ -11,41 +12,44 @@ import repositorios.RepositorioUsuario;
 
 public class Teste {
 
-	public static void main(String[] args) {
-		RepositorioUsuario testeUsuario = new RepositorioUsuario();
+    public static void main(String[] args) {
+        /*RepositorioUsuario testeUsuario = new RepositorioUsuario();
 		
-		/*Usuario a = new Usuario();
+		Usuario a = new Usuario();
 		
-		a.setNome("Clayton");
-		a.setEmail("clayton@gmail.com");
+		a.setNome("Nicollas");
+                a.setCpf("123456789");
+		a.setEmail("niscas@gmail.com");
 		a.setSenha("12345");
-		a.setTipo("Estagiário");
+		a.setTipo("administrador");
 		
 		testeUsuario.insert(a);*/
-		
-		/*ArrayList<Usuario> arrayUsuario = (ArrayList<Usuario>) testeUsuario.Listen();
+
+ /*ArrayList<Usuario> arrayUsuario = (ArrayList<Usuario>) testeUsuario.Listen();
 		
 		for(int i = 0; i < arrayUsuario.size(); i++) {
 			System.out.println(arrayUsuario.get(i).getNome());
 		}*/
-		
-		//Usuario b = testeUsuario.search("Trio da Huana");
-		//b.setNome("Trio da Huana");
-		
-		//testeUsuario.update(b);
-		//testeUsuario.delete(b);
-		
-		//System.out.println(b.getEmail());
-		
-		/*RepositorioArtigo testeArtigo = new RepositorioArtigo();
+        //Usuario b = testeUsuario.search("Trio da Huana");
+        //b.setNome("Trio da Huana");
+        //testeUsuario.update(b);
+        //testeUsuario.delete(b);
+        //System.out.println(b.getEmail());
+        ControllerArtigo testeLista = new ControllerArtigo();
+
+        /*for (int i = 0; i < testeLista.listaArtigo().size(); i++) {
+            System.out.println(testeLista.listaArtigo().get(i).getTitulo());
+        }*/
+        
+        testeLista.sorteioArtigo();
+        /*RepositorioArtigo testeArtigo = new RepositorioArtigo();
 		
 		ArrayList<Artigo> arrayArtigo = (ArrayList<Artigo>) testeArtigo.Listen();
 		
 		for(int i = 0; i < arrayArtigo.size(); i++) {
-			System.out.println(arrayArtigo.get(i).getNome());
+			System.out.println(arrayArtigo.get(i).getTitulo());
 		}*/
-		
-		/*/Artigo b = new Artigo();
+ /*Artigo b = new Artigo();
 		
 		b.setNome("Andersson");
 		b.setTitulo("Sabão");
@@ -58,17 +62,14 @@ public class Teste {
 		
 		testeArtigo.insert(b);
 		System.out.println(b.getNome());*/
-		
-		/*Artigo c = testeArtigo.search("Nicollas");
+ /*Artigo c = testeArtigo.search("Nicollas");
 
 		//c.setNome("Nicollas");
 		//testeArtigo.update(c);
 		testeArtigo.delete(c);
 		
 		System.out.println(c.getNome());*/
-		
-		
-		RepositorioEquipe testeEquipe = new RepositorioEquipe();
+ /*RepositorioEquipe testeEquipe = new RepositorioEquipe();
 		
 		Equipe d = new Equipe();
 		
@@ -95,8 +96,7 @@ public class Teste {
 				System.out.println("Estagiário: " + arrayEquipe.get(i).getUsuarios().get(j).getNome());
 			}
 			
-		}
-
-	}
+		}*/
+    }
 
 }

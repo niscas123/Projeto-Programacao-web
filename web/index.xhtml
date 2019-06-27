@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
         <h:head>
@@ -14,16 +11,21 @@
                 <p:layoutUnit position="center">
                     <h:form id="login">
                         <p:panel header="Login" style="width:600px; margin:auto">
-                        <h:panelGrid columns="2" cellpadding="8">
-                            <h:outputLabel for="username" value="Usuário: " />
-                            <p:inputText id="nome" value="#{controllerUsuario.email}" required="true" label="username" />
+                            <h:panelGrid columns="2" cellpadding="8">
+                                <h:outputLabel for="email" value="Usuário: " />
+                                <p:inputText id="email" value="#{controllerUsuario.email}" required="true" label="username" />
 
-                            <h:outputLabel for="password" value="Senha: " />
-                            <p:password id="senha" value="#{controllerUsuario.senha}" required="true" label="password" />
-                            
-                        </h:panelGrid>
-                            <p:commandButton value="Login" id="button" action="#{controllerUsuario.login(controller.email, controller.senha)}" ajax="false"/>
+                                <h:outputLabel for="senha" value="Senha: " />
+                                <p:password id="senha" value="#{controllerUsuario.senha}" required="true" label="password" />
+
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" cellpadding="13">
+                                <p:commandButton value="Login" id="button" action="#{controllerUsuario.login(controllerUsuario.email, controllerUsuario.senha)}" ajax="false"/>
+
+                                <!--<p:commandButton id="buttonCadastro" value="Cadastrar Usuário" action="estagiario.xhtml" ajax="false" />-->
+                            </h:panelGrid>
                         </p:panel>
+
                     </h:form>
                 </p:layoutUnit>
             </p:layout>

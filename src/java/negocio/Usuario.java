@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-@ManagedBean(name = "usuario")
+@ManagedBean(name = "usu")
 @RequestScoped
 public class Usuario {
 
@@ -25,7 +25,7 @@ public class Usuario {
     @Column(name = "nome", length = 255)
     private String nome;
 
-    @Column(name = "cpf", length = 15, unique = true)
+    @Column(name = "cpf", length = 30, unique = true)
     private String cpf;
 
     @Column(name = "senha", length = 255)
@@ -36,7 +36,7 @@ public class Usuario {
 
     @Column(name = "tipo", length = 255)
     private String tipo;
-
+    
     public Usuario(int id, String nome, String cpf, String senha, String email, String tipo) {
         this.id = id;
         this.nome = nome;
@@ -47,7 +47,6 @@ public class Usuario {
     }
 
     public Usuario() {
-
     }
 
     public int getId() {

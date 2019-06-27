@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "artigo")
-@ManagedBean(name = "artigo")
+@ManagedBean(name = "art")
 @RequestScoped
 public class Artigo {
 

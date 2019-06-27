@@ -7,110 +7,43 @@
 
     <f:view contentType="text/html">
         <h:head>
-            <f:facet name="primeiro">
+            <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>LISTA DE ARTIGOS</title>
             </f:facet>
         </h:head>
 
         <h:body>
-            <!---
-            <p:menu>
-                <p:submenu label="MENU">
-                    <p:menuitem value="HOME" url="home.xhtml" />
-                    <p:menuitem value="Novo Formulario" url="formulario.xhtml" />
-                    <p:menuitem value="Novo Estagiario" url="novoEstagiario.xhtml" />
-                    <p:menuitem value="Novo Administrador" url="novoAdmin.xhtml" />
-                    <p:menuitem value="Listar Formularios" url="listarForms.xhtml" />
-                </p:submenu>
-            </p:menu>
-            -->
-            <c:if  test="${controladoUser.log == 2}">
+            <p:layout fullPage="true">
+            <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
+                <p:menu>
+                    <p:submenu label="MENU">
+                        <p:menuitem value="Página Inicial" url="home.xhtml" />
+                        <p:menuitem value="Novo Estagiário" url="estagiario.xhtml" />
+                        <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
+                        <p:menuitem value="Novo Artigo" url="artigo.xhtml" />
+                        <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
+                        <p:menuitem value="Sair do Sistema" url="#{controllerUsuario.logout()}" />
+                    </p:submenu>
+                </p:menu>
+            </p:layoutUnit>
 
-                <p:layout fullPage="true">
-                    <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
-                        <p:menu>
-                            <p:submenu label="MENU">
-                                <p:menuitem value="Página Inicial" url="home.xhtml" />
-                                <p:menuitem value="Novo Estagiário" url="novoEstagiario.xhtml" />
-                                <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
-                                <p:menuitem value="Lista de Sorteio" url="listarSorteio.xhtml" />
-                            </p:submenu>
-                        </p:menu>
-                    </p:layoutUnit>
-                    <p:layoutUnit position="center">
-                        <c:forEach var="item" items="#{controllerArtigo.listaLider()}">
-                            <p:panelGrid columns="2">
-                                <h:outputText value="Nome do Autor:" />
-                                <h:outputText value="#{item.nome}" />
+            <p:layoutUnit position="center">
+                <p:panel header="Lista de Artigos" style="width:600px; margin:auto">
+                    <c:forEach var="item" items="#{controllerArtigo.listaArtigo()}">
+                        <p:panelGrid columns="2">
+                            <h:outputText value="Título:" />
+                            <h:outputText value="#{item.titulo}" />
 
-                                <h:outputText value="Título:" />
-                                <h:outputText value="#{item.titulo}" />
+                            <h:outputText value="Nome:" />
+                            <h:outputText value="#{item.nome}" />
+                        </p:panelGrid>
+                    </c:forEach>
+                </p:panel>
+            </p:layoutUnit>
+            </p:layout>
 
-                                <h:outputText value="Publicacao:" />
-                                <h:outputText value="#{item.publicacao}" />
-
-                                <h:outputText value="Ano:" />
-                                <h:outputText value="#{item.ano}" />
-
-                                <h:outputText value="Páginas:" />
-                                <h:outputText value="#{item.paginas}" />
-
-                                <h:outputText value="DOI:" />
-                                <h:outputText value="#{item.doi}" />
-
-                                <h:outputText value="ISBN:" />
-                                <h:outputText value="#{item.isbn}" />
-                            </p:panelGrid>
-                        </c:forEach>
-                    </p:layoutUnit>
-                </p:layout>
-
-
-
-            </c:if>
-
-            <c:if  test="${controladoUser.log == 3}">
-
-                <p:layout fullPage="true">
-                    <p:layoutUnit position="west" size="200" header="Minimizar" collapsible="true">
-                        <p:menu>
-                            <p:submenu label="MENU">
-                                <p:menuitem value="Página Inicial" url="home.xhtml" />
-                                <p:menuitem value="Novo Administrador" url="administrador.xhtml" />
-                                <p:menuitem value="Lista de Artigos" url="listarArtigos.xhtml" />
-                                <p:menuitem value="Lista de Sorteio" url="listarSorteio.xhtml" />
-                            </p:submenu>
-                        </p:menu>
-                    </p:layoutUnit>
-                    <p:layoutUnit position="center">
-                        <c:forEach var="item" items="#{controllerArtigo.lista()}">
-                            <p:panelGrid columns="2">
-                                <h:outputText value="Nome do Autor:" />
-                                <h:outputText value="#{item.nome}" />
-
-                                <h:outputText value="Título:" />
-                                <h:outputText value="#{item.titulo}" />
-
-                                <h:outputText value="Publicacao:" />
-                                <h:outputText value="#{item.publicacao}" />
-
-                                <h:outputText value="Ano:" />
-                                <h:outputText value="#{item.ano}" />
-
-                                <h:outputText value="Páginas:" />
-                                <h:outputText value="#{item.paginas}" />
-
-                                <h:outputText value="DOI:" />
-                                <h:outputText value="#{item.doi}" />
-
-                                <h:outputText value="ISBN:" />
-                                <h:outputText value="#{item.isbn}" />
-                            </p:panelGrid>
-                        </c:forEach>
-                    </p:layoutUnit>
-                </p:layout>     
-            </c:if>
         </h:body>
+
     </f:view>
 </html>
